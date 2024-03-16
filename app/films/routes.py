@@ -17,7 +17,7 @@ def getSpecificFilm(id):
     for film in films:
         if film["id"] == id:
             return film, 200
-    return {"error": "Film not found."}, 404
+    return {"error": "The following film wasn't not found."}, 404
 
 # Will return the actors of a specific film
 @filmsBP.get("/<int:id>/actors")
@@ -34,7 +34,7 @@ def getActorsFromFilm(id):
             if len(filmActors) == 0:
                 return {"error": "No actors found for this film."}, 404
             return filmActors, 200
-    return {"error": "Film not found."}, 404
+    return {"error": "The following film wasn't not found."}, 404
 
 # Put method goes here.
 @filmsBP.put("/<int:id>")
@@ -45,4 +45,8 @@ def modifyFilm(id):
         newFilm = request.get_json()
         for film in films:
             if film["id"] == id:
-                pass
+                for element in newFilm:
+                    film[element] = newFilm[element]
+                return film, 200
+        return {"error": "The following film wasn't not found."}, 404
+    return {"error": "The request must be JSON."}, 400
