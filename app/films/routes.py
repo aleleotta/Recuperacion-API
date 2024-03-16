@@ -21,15 +21,15 @@ def getSpecificFilm(id):
 
 # Will return the actors of a specific film
 @filmsBP.get("/<int:id>/actors")
-def getActorsFromFilm(filmId):
+def getActorsFromFilm(id):
     global filmsFilePath, actorsFilePath
     films = readFile(filmsFilePath)
     actors = readFile(actorsFilePath)
     for film in films:
-        if film["id"] == filmId:
+        if film["id"] == id:
             filmActors = []
             for actor in actors:
-                if actor["id_movie"] == filmId:
+                if actor["id_movie"] == id:
                     filmActors.append(actor)
             if len(filmActors) == 0:
                 return {"error": "No actors found for this film."}, 404
