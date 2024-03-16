@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from utils.functions import *
 
 filmsBP = Blueprint("films", __name__)
@@ -37,3 +37,12 @@ def getActorsFromFilm(id):
     return {"error": "Film not found."}, 404
 
 # Put method goes here.
+@filmsBP.put("/<int:id>")
+def modifyFilm(id):
+    if request.is_json:
+        global filmsFilePath
+        films = readFile(filmsFilePath)
+        newFilm = request.get_json()
+        for film in films:
+            if film["id"] == id:
+                pass
