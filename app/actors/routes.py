@@ -1,4 +1,4 @@
-from flask import Blueprint
+from flask import Blueprint, request
 from utils.functions import *
 
 actorsBP = Blueprint("actors", __name__)
@@ -17,6 +17,12 @@ def getSpecificActor(id):
         if actor["id"] == id:
             return actor, 200
     return {"error": "The following actor was not found."}, 404
+
+@actorsBP.post("/")
+def createActor():
+    if request.is_json:
+        global filePath
+        actors = readFile(filePath)
 
 def deleteActor(id):
     global filePath
