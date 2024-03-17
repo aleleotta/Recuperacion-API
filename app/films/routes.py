@@ -29,7 +29,7 @@ def getActorsFromFilm(id):
         if film["id"] == id:
             filmActors = []
             for actor in actors:
-                if actor["id_movie"] == id:
+                if actor["id_film"] == id:
                     filmActors.append(actor)
             if len(filmActors) == 0:
                 return {"error": "No actors found for this film."}, 404
