@@ -48,6 +48,6 @@ def modifyFilm(id):
                 for element in newFilm:
                     film[element] = newFilm[element]
                 return film, 200
-        return {"error": "The following film wasn't not found."}, 404 # This will replaced with a post.
+        return film, 201
     return {"error": "The request must be JSON."}, 400
 #endregion
