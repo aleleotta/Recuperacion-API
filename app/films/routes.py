@@ -5,6 +5,7 @@ filmsBP = Blueprint("films", __name__)
 filmsFilePath = "app/files/films.json"
 actorsFilePath = "app/files/actors.json"
 
+#region Endpoints
 @filmsBP.get("/")
 def getFilms():
     global filmsFilePath
@@ -36,7 +37,6 @@ def getActorsFromFilm(id):
             return filmActors, 200
     return {"error": "The following film wasn't not found."}, 404
 
-# Put method goes here.
 @filmsBP.put("/<int:id>")
 def modifyFilm(id):
     if request.is_json:
@@ -50,3 +50,4 @@ def modifyFilm(id):
                 return film, 200
         return {"error": "The following film wasn't not found."}, 404
     return {"error": "The request must be JSON."}, 400
+#endregion

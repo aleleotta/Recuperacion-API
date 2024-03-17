@@ -5,6 +5,7 @@ actorsBP = Blueprint("actors", __name__)
 filmsFilePath = "app/files/films.json"
 actorsFilePath = "app/files/actors.json"
 
+#region Endpoints
 @actorsBP.get("/")
 def getActors():
     global actorsFilePath
@@ -47,3 +48,4 @@ def deleteActor(id):
             writeFile(actorsFilePath, actors)
             return {"message": f"The following actor was deleted: {actorName}"}, 200
     return {"error": "The following actor was not found."}, 404
+#endregion
