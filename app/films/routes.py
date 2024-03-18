@@ -48,6 +48,8 @@ def modifyFilm(id):
                 for element in newFilm:
                     film[element] = newFilm[element]
                 return film, 200
-        return film, 201
+        films.append(newFilm)
+        writeFile(actorsFilePath, films)
+        return newFilm, 201
     return {"error": "The request must be JSON."}, 400
 #endregion

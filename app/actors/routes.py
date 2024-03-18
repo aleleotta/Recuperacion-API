@@ -35,6 +35,7 @@ def createActor():
         for film in films:
             if film["id"] == actor["id_film"]:
                 actors.append(actor)
+                writeFile(actorsFilePath, actors)
                 return actor, 201
         return {"error": "The film ID couldn't be identified so the following film wasn't posted into the list."}
 
