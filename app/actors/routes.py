@@ -35,6 +35,7 @@ def createActor():
                 return actor, 201
         return {"error": "The film ID couldn't be identified so the following actor wasn't posted into the list."}
 
+@actorsBP.delete("/")
 def deleteActor(id):
     global actorsFilePath
     actors = readFile(actorsFilePath)
