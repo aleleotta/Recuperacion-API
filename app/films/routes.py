@@ -30,9 +30,8 @@ def getActorsFromFilm(id):
         if film["id"] == id:
             filmActors = []
             for actor in actors:
-                for filmID in actor["id_film"]: # Search inside id_film array inside JSON object.
-                    if filmID == id:
-                        filmActors.append(actor)
+                if actor["id_film"] == id:
+                    filmActors.append(actor)
             if len(filmActors) == 0:
                 return {"error": "No actors found for this film."}, 404
             return filmActors, 200
