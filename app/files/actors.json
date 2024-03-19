@@ -4,20 +4,20 @@
         "actor_name": "Leonardo Di Caprio",
         "birthday": "11/11/1974",
         "nationality": "American",
-        "id_film": 2
+        "id_film": [2]
     },
     {
         "id": 1,
         "actor_name": "Cillian Murphy",
         "birthday": "25/05/1976",
         "nationality": "Irish",
-        "id_film": 0
+        "id_film": [0]
     },
     {
         "id": 2,
         "actor_name": "Robert Downey Jr.",
         "birthday": "04/04/1965",
         "nationality": "American",
-        "id_film": 1
+        "id_film": [1, 0]
     }
 ]
