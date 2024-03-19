@@ -43,6 +43,7 @@ def modifyFilm(id):
         global filmsFilePath
         newFilm = request.get_json()
         films = readFile(filmsFilePath)
+        newFilm["id"] = findNextId(films)
         for film in films:
             if film["id"] == id:
                 for element in newFilm:

@@ -11,3 +11,7 @@ def writeFile(filePath, data):
     file = open(filePath, "w")
     json.dump(data, file)
     file.close()
+
+def findNextId(list: list):
+    currentId = len(list)
+    return currentId
