@@ -8,13 +8,16 @@ app = Flask(__name__)
 app.register_blueprint(actorsBP, url_prefix="/actors")
 app.register_blueprint(filmsBP, url_prefix="/films")
 
-filmsFilePath = "app/files/films.json"
-actorsFilePath = "app/files/actors.json"
-
 @app.put("/backup")
 def backup():
-    films = readFile(filmsFilePath)
-    actors = readFile(actorsFilePath)
+    filmsBackupFilePath = "app/backups/films.json"
+    actorsBackupFilePath = "app/backups/actors.json"
+    filmsFilePath = "app/files/films.json"
+    actorsFilePath = "app/files/actors.json"
+    films = readFile(filmsBackupFilePath)
+    actors = readFile(actorsBackupFilePath)
+    writeFile(filmsFilePath, films)
+    writeFile(actorsFilePath, actors)
     return {"success": "Backups have been loaded."}, 200
 
 if __name__ == "__main__":
