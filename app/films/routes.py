@@ -41,8 +41,8 @@ def getActorsFromFilm(id):
 def modifyFilm(id):
     if request.is_json:
         global filmsFilePath
-        films = readFile(filmsFilePath)
         newFilm = request.get_json()
+        films = readFile(filmsFilePath)
         for film in films:
             if film["id"] == id:
                 for element in newFilm:
