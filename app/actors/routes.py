@@ -33,7 +33,8 @@ def createActor():
                 actors.append(actor)
                 writeFile(actorsFilePath, actors)
                 return actor, 201
-        return {"error": "The film ID couldn't be identified so the following actor wasn't posted into the list."}
+        return {"error": "The film ID couldn't be identified so the following actor wasn't posted into the list."}, 404
+    return {"error": "The following request is not a JSON file."}, 415
 
 @actorsBP.delete("/<int:id>")
 def deleteActor(id):

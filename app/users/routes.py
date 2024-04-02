@@ -11,7 +11,7 @@ def registerUser():
     if request.is_json:
         userList = readFile(filepath)
         newUser = request.get_json()
-        password = newUser["password"]
+        password = newUser["password"].encode("utf-8")
         salt = gensalt()
         hash = hashpw(password, salt)
         newUser["password"] = hash
@@ -19,6 +19,6 @@ def registerUser():
         writeFile(userList, filepath)
         return newUser, 201
     else:
-        return {"error": "The following request is not a JSON file."}, 400
+        return {"error": "The following request is not a JSON file."}, 415
 
 #endregion
