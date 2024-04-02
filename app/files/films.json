@@ -1,17 +1,1 @@
-[
-    {
-        "id": 0,
-        "film": "Oppenheimer",
-        "release_date": 2023
-    },
-    {
-        "id": 1,
-        "film": "Iron Man",
-        "release_date": 2008
-    },
-    {
-        "id": 2,
-        "film": "Titanic",
-        "release_date": 1997
-    }
-]
+[{"id": 0, "film": "Oppenheimer", "release_date": 2023}, {"id": 1, "film": "Iron Man", "release_date": 2008}, {"id": 2, "film": "Titanic", "release_date": 1997}]
