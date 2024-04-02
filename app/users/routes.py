@@ -13,7 +13,7 @@ def registerUser():
         newUser = request.get_json()
         password = newUser["password"].encode("utf-8")
         salt = gensalt()
-        hash = hashpw(password, salt)
+        hash = hashpw(password, salt).hex()
         newUser["password"] = hash
         userList.append(newUser)
         writeFile(userList, filepath)
