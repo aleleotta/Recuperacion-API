@@ -1,9 +1,12 @@
 from flask import *
+from flask_jwt_extended import JWTManager
 from utils.functions import *
 from actors.routes import actorsBP
 from films.routes import filmsBP
 
 app = Flask(__name__)
+app.config["SECRET_KEY"] = ""
+jwt = JWTManager()
 
 app.register_blueprint(actorsBP, url_prefix="/actors")
 app.register_blueprint(filmsBP, url_prefix="/films")

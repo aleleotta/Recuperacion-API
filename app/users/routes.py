@@ -9,8 +9,16 @@ filepath = "app/files/users.json"
 @usersBP.post("/")
 def registerUser():
     if request.is_json:
+        userList = readFile(filepath)
         newUser = request.get_json()
         password = newUser["password"]
         salt = gensalt()
         hash = hashpw(password, salt)
+        newUser["password"] = hash
+        userList.append(newUser)
+        writeFile(userList, filepath)
+        return newUser, 201
+    else:
+        return {"error": "The following request is not a JSON file."}, 400
+
 #endregion
