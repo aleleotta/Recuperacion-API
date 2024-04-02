@@ -36,5 +36,11 @@ def loginUser():
                 if user["password"] == hash:
                     token = create_access_token(identity = username)
                     return {"token": token}, 200
+                else:
+                    {"error": "Access denied."}, 401
+            else:
+                {"error": "The following user was not found."}, 404
+    else:
+        return {"error": "The following request is not a JSON file."}, 415
 
 #endregion
