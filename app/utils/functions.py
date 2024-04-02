@@ -2,8 +2,11 @@ from files import *
 import json
 
 def readFile(filePath):
-    file = open(filePath, "r")
-    list = json.load(file)
+    try:
+        file = open(filePath, "r")
+        list = json.load(file)
+    except json.JSONDecodeError:
+        list = []
     file.close()
     return list
 
