@@ -10,9 +10,9 @@ app.register_blueprint(filmsBP, url_prefix="/films")
 
 @app.put("/backup")
 def backup():
-    filmsBackupFilePath = "app/backups/films.json"
-    actorsBackupFilePath = "app/backups/actors.json"
-    filmsFilePath = "app/files/films.json"
+    filmsBackupFilePath = "app/backups/films_backup.json"
+    actorsBackupFilePath = "app/backups/actors_backup.json"
+    filmsFilePath = "app/files/films_backup.json"
     actorsFilePath = "app/files/actors.json"
     films = readFile(filmsBackupFilePath)
     actors = readFile(actorsBackupFilePath)
