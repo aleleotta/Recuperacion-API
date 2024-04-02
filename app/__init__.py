@@ -3,13 +3,19 @@ from flask_jwt_extended import JWTManager
 from utils.functions import *
 from actors.routes import actorsBP
 from films.routes import filmsBP
+import string
+import secrets
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = ""
-jwt = JWTManager()
 
 app.register_blueprint(actorsBP, url_prefix="/actors")
 app.register_blueprint(filmsBP, url_prefix="/films")
+
+alphabet = string.ascii_letters + string.digits
+password = "".join(secrets.choice(alphabet) for i in range(8))
+
+app.config["SECRET_KEY"] = password
+jwt = JWTManager(app)
 
 @app.put("/backup")
 def backup():

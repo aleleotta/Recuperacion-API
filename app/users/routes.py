@@ -1,5 +1,6 @@
 from flask import Blueprint, request
 from bcrypt import *
+from flask_jwt_extended import create_access_token
 from utils.functions import *
 
 usersBP = Blueprint("users", __name__)
@@ -20,5 +21,20 @@ def registerUser():
         return newUser, 201
     else:
         return {"error": "The following request is not a JSON file."}, 415
+    
+@usersBP.get("/")
+def loginUser():
+    if request.is_json:
+        users = readFile(filepath)
+        user = request.get_json()
+        username = user["username"]
+        for currentUser in users:
+            if currentUser["username"] == username:
+                password = user["password"].encode("utf-8")
+                salt = gensalt()
+                hash = hashpw(password, salt).hex()
+                if user["password"] == hash:
+                    token = create_access_token(identity = username)
+                    return {"token": token}, 200
 
 #endregion
