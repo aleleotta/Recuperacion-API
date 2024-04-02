@@ -33,7 +33,7 @@ def loginUser():
                 password = user["password"].encode("utf-8")
                 salt = gensalt()
                 hash = hashpw(password, salt).hex()
-                if user["password"] == hash:
+                if checkpw(password, bytes.fromhex(user["password"])):
                     token = create_access_token(identity = username)
                     return {"token": token}, 200
                 else:
