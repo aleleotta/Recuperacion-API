@@ -17,7 +17,7 @@ def registerUser():
         hash = hashpw(password, salt).hex()
         newUser["password"] = hash
         userList.append(newUser)
-        writeFile(userList, filepath)
+        writeFile(filepath, userList)
         return newUser, 201
     else:
         return {"error": "The following request is not a JSON file."}, 415
@@ -31,15 +31,13 @@ def loginUser():
         for currentUser in users:
             if currentUser["username"] == username:
                 password = user["password"].encode("utf-8")
-                salt = gensalt()
-                hash = hashpw(password, salt).hex()
-                if checkpw(password, bytes.fromhex(user["password"])):
+                if checkpw(password, bytes.fromhex(currentUser["password"])):
                     token = create_access_token(identity = username)
                     return {"token": token}, 200
                 else:
-                    {"error": "Access denied."}, 401
+                    return {"error": "Access denied."}, 401
             else:
-                {"error": "The following user was not found."}, 404
+                return {"error": "The following user was not found."}, 404
     else:
         return {"error": "The following request is not a JSON file."}, 415
 

@@ -1,18 +1,1 @@
-[
-    {
-        "username": "guest",
-        "password": "guest"
-    },
-    {
-        "username": "admin1",
-        "password": "login2024"
-    },
-    {
-        "username": "admin2",
-        "password": "login2024"
-    },
-    {
-        "username": "admin3",
-        "password": "login2024"
-    }
-]
+[{"username": "guest", "password": "guest"}, {"username": "admin1", "password": "login2024"}, {"username": "admin2", "password": "login2024"}, {"username": "admin3", "password": "login2024"}, {"username": "aleleotta", "password": "24326224313224526461656d6b554b705a62757072476558627264344f48554878746c445061324264797838315762786739486e6a676a414d574c61"}]
