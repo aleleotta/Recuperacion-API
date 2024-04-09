@@ -1,4 +1,5 @@
 from flask import Blueprint, request
+from flask_jwt_extended import jwt_required
 from utils.functions import *
 
 actorsBP = Blueprint("actors", __name__)
