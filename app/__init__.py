@@ -3,6 +3,7 @@ from flask_jwt_extended import JWTManager
 from utils.functions import *
 from actors.routes import actorsBP
 from films.routes import filmsBP
+from users.routes import usersBP
 import string
 import secrets
 
@@ -10,6 +11,7 @@ app = Flask(__name__)
 
 app.register_blueprint(actorsBP, url_prefix="/actors")
 app.register_blueprint(filmsBP, url_prefix="/films")
+app.register_blueprint(usersBP, url_prefix="/users")
 
 alphabet = string.ascii_letters + string.digits
 password = "".join(secrets.choice(alphabet) for i in range(8))
