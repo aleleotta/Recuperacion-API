@@ -21,6 +21,7 @@ def getSpecificActor(id):
     return {"error": "The following actor was not found."}, 404
 
 @actorsBP.post("/")
+@jwt_required()
 def createActor():
     if request.is_json:
         global actorsFilePath, filmsFilePath
@@ -37,6 +38,7 @@ def createActor():
     return {"error": "The following request is not a JSON file."}, 415
 
 @actorsBP.delete("/<int:id>")
+@jwt_required()
 def deleteActor(id):
     global actorsFilePath
     actors = readFile(actorsFilePath)

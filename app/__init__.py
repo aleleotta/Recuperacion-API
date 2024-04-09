@@ -1,5 +1,5 @@
 from flask import *
-from flask_jwt_extended import JWTManager
+from flask_jwt_extended import JWTManager, jwt_required
 from utils.functions import *
 from actors.routes import actorsBP
 from films.routes import filmsBP
@@ -20,6 +20,7 @@ app.config["SECRET_KEY"] = password
 jwt = JWTManager(app)
 
 @app.put("/backup")
+@jwt_required
 def backup():
     filmsBackupFilePath = "app/backups/films_backup.json"
     actorsBackupFilePath = "app/backups/actors_backup.json"

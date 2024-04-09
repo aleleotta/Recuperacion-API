@@ -1,4 +1,5 @@
 from flask import Blueprint, request
+from flask_jwt_extended import jwt_required
 from utils.functions import *
 
 filmsBP = Blueprint("films", __name__)
@@ -38,6 +39,7 @@ def getActorsFromFilm(id):
     return {"error": "The following film wasn't not found."}, 404
 
 @filmsBP.put("/<int:id>")
+@jwt_required()
 def modifyFilm(id):
     if request.is_json:
         global filmsFilePath

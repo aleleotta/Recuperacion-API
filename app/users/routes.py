@@ -36,8 +36,7 @@ def loginUser():
                     return {"token": token}, 200
                 else:
                     return {"error": "Access denied."}, 401
-            else:
-                return {"error": "The following user was not found."}, 404
+        return {"error": "The following user was not found."}, 404
     else:
         return {"error": "The following request is not a JSON file."}, 415
 
