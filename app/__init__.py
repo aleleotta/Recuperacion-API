@@ -24,12 +24,16 @@ jwt = JWTManager(app)
 def backup():
     filmsBackupFilePath = "app/backups/films_backup.json"
     actorsBackupFilePath = "app/backups/actors_backup.json"
+    usersBackupFilePath = "app/backups/users_backup.json"
     filmsFilePath = "app/files/films_backup.json"
     actorsFilePath = "app/files/actors.json"
+    usersFilePath = "app/files/users.json"
     films = readFile(filmsBackupFilePath)
     actors = readFile(actorsBackupFilePath)
+    users = readFile(usersBackupFilePath)
     writeFile(filmsFilePath, films)
     writeFile(actorsFilePath, actors)
+    writeFile(usersFilePath, users)
     return {"success": "Backups have been loaded."}, 200
 
 if __name__ == "__main__":
